@@ -1,0 +1,42 @@
+.main {
+  width: 100%;
+  font-family: var(--ff);
+  font-size: 16px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  gap: 2ch;
+  padding-top: .5em;
+  padding-bottom: 1em;
+  padding-left: 1ch;
+  padding-right: 2ch;
+  background-color: gray;
+}
+
+.nav-button {
+  flex: 0 1 auto;
+  background-color: cyan;
+  display: inline-block;
+  text-align: center;
+  padding: .5em .5ch;
+  box-shadow: 1ch .5em 0 0 black;
+}
+.nav-button:hover {
+  cursor: crosshair;
+  color: blue;
+  box-shadow: 1ch .5em 0 0 blue;
+}
+
+.home-button {
+  flex: 1 1 auto;
+  background-color: cyan;
+  display: inline-block;
+  text-align: center;
+  padding: .5em .5ch;
+  box-shadow: 1ch .5em 0 0 black;
+}
+.home-button:hover {
+  cursor: crosshair;
+  color: blue;
+  box-shadow: 1ch .5em 0 0 blue;
+}

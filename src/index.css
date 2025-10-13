@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'WEB IBM VGA 8x16';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/Web437_IBM_VGA_8x16.woff) format('woff');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ff: 'WEB IBM VGA 8x16';
+  --font-default: 16px;
+  --font-medium: 24px;
+  --font-large: 32px;
+  background-color: black;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100dvh; /* dynamic viewport height */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
