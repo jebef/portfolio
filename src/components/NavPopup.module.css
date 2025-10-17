@@ -1,0 +1,21 @@
+.main {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  background-color: gray;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.quote {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
+
+.about,
+.projects {
+  font-family: var(--ff);
+}
+

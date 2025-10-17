@@ -1,0 +1,28 @@
+.main {
+  width: 100%;
+  font-family: var(--ff);
+  font-size: 16px;
+  color: black;
+  display: flex;
+  justify-content: flex-end;
+  gap: 2ch;
+  padding-top: .5em;
+  padding-bottom: 1em;
+  padding-left: 1ch;
+  padding-right: 2ch;
+  background-color: gray;
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: .5em;
+}
+
+.jebef-img {
+  width: 32px;
+  aspect-ratio: 1/1;
+  box-shadow: 1ch .5em 0 0 black;
+  image-rendering: pixelated;
+}
