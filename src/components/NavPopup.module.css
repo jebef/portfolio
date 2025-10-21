@@ -1,21 +1,299 @@
 .main {
   width: 100%;
-  height: 100px;
-  display: flex;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
   background-color: gray;
   color: white;
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
+  gap: 2ch;
+  padding-left: 1ch;
+  padding-right: 2ch;
+
+  --nav-delay: 0;
 }
 
-.quote {
+.motherboard {
+  width: 296px;
+  height: 192px;
+  box-sizing: border-box;
+  background-color: blue;
+  box-shadow: 1ch .5em black;
+  position: relative;
+
+  --wire-a-color: white;
+  --wire-b-color: white;
+  --wire-c-color: white;
+
+  --nav-icon: 'null';
+  --rivet-a-sat: 0%;
+  --rivet-b-sat: 0%;
+  --rivet-c-sat: 0%;
+}
+
+.motherboard:has(.nav-button--a:hover) {
+  --wire-a-color: magenta;
+  --rivet-a-sat: 100%;
+  --nav-icon: url('/images/question-green.png');
+}
+
+.motherboard:has(.nav-button--b:hover) {
+  --wire-b-color: magenta;
+  --rivet-b-sat: 100%;
+  --nav-icon: url('/images/hammer-green.png');
+}
+
+.motherboard:has(.nav-button--c:hover) {
+  --wire-c-color: magenta;
+  --rivet-c-sat: 100%;
+  --nav-icon: url('/images/top-hat-green.png');
+}
+
+
+.nav-button {
+  width: 128px;
+  height: 48px;
+  flex: 0 0 auto;
+  background-color: black;
+  border: medium solid gray;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 16px;
+}
+
+.nav-button__plaque {
+  width: 60%;
+  height: 32px;
+  color: rgb(0, 255, 0);
+  font-family: var(--ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: medium inset gray;
+}
+
+.nav-button__rivet {
+  position: absolute;
+  width: 12px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-image: url('/images/checkerboard-magenta.png');
+  image-rendering: pixelated;
+  filter: saturate(0%);
+  border: thin solid magenta;
+}
+
+.nav-button--a {
+  top: 16px;
+}
+
+.nav-button--a:hover {
+  cursor: crosshair;
+}
+
+.nav-button--b {
+  top: 72px;
+}
+
+.nav-button--b:hover {
+  cursor: crosshair;
+}
+
+.nav-button--c {
+  bottom: 16px;
+}
+
+.nav-button--c:hover {
+  cursor: crosshair;
+}
+
+.motherboard__wire {
+  background-color: white;
+  position: absolute;
+  --wire-diam: 8px;
+  box-sizing: border-box;
+  /* transition: all 0.3s ease-in; */
+}
+
+.motherboard__wire--a {
+  background-color: var(--wire-a-color);
+}
+
+.motherboard__wire--b {
+  background-color: var(--wire-b-color);
+}
+
+.motherboard__wire--c {
+  background-color: var(--wire-c-color);
+}
+
+.motherboard__wire--a--1 {
+  height: var(--wire-diam);
+  width: 40px;
+  top: 36px;
+  left: 144px;
+}
+
+.motherboard__wire--a--2 {
+  width: var(--wire-diam);
+  height: 108px;
+  top: 36px;
+  left: 184px;
+}
+
+.motherboard__wire--a--3 {
+  height: var(--wire-diam);
+  width: 40px;
+  top: 136px;
+  left: 192px;
+}
+
+.motherboard__wire--a--4 {
+  width: var(--wire-diam);
+  height: 8px;
+  bottom: 56px;
+  right: 64px;
+}
+
+.motherboard__wire--b--1 {
+  height: var(--wire-diam);
+  width: 24px;
+  top: 92px;
+  left: 144px;
+}
+
+.motherboard__wire--b--2 {
+  width: var(--wire-diam);
+  height: 68px;
+  top: 92px;
+  left: 168px;
+}
+
+.motherboard__wire--b--3 {
+  height: var(--wire-diam);
+  width: 72px;
+  top: 152px;
+  left: 176px;
+}
+
+.motherboard__wire--b--4 {
+  width: var(--wire-diam);
+  height: 50px;
+  bottom: 40px;
+  right: 48px;
+}
+
+.motherboard__wire--c--1 {
+  height: var(--wire-diam);
+  width: 8px;
+  bottom: 36px;
+  left: 144px;
+}
+
+.motherboard__wire--c--2 {
+  width: var(--wire-diam);
+  height: 28px;
+  top: 148px;
+  left: 152px;
+}
+
+.motherboard__wire--c--3 {
+  height: var(--wire-diam);
+  width: 96px;
+  bottom: 16px;
+  left: 160px;
+}
+
+.motherboard__wire--c--4 {
+  width: var(--wire-diam);
+  height: 48px;
+  bottom: 16px;
+  right: 32px;
+}
+
+.light-base {
+  width: 72px;
+  height: 32px;
+  position: absolute;
+  bottom: 64px;
+  right: 16px;
+  background-color: black;
+  box-sizing: border-box;
+  border: medium solid gray;
+}
+
+.light-base__rivet {
+  position: absolute;
+  top: 7px;
+  width: 12px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-image: url('/images/checkerboard-magenta.png');
+  filter: saturate(0%);
+  image-rendering: pixelated;
+  border: thin solid magenta;
+}
+
+.light-base__rivet--a {
+  filter: saturate(var(--rivet-a-sat));
+  left: 11px;
+}
+.light-base__rivet--b {
+  filter: saturate(var(--rivet-b-sat));
+  left: 27px;
+}
+.light-base__rivet--c {
+  filter: saturate(var(--rivet-c-sat));
+  left: 43px;
+}
+
+.light-stand {
+  width: 18px;
+  height: 10px;
+  position: absolute;
+  background-color: gray;
+  bottom: 96px;
+  right: 43px;
+}
+
+.light-bulb {
+  width: 72px;
+  height: 72px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border-radius: 50%;
+  background-color: black;
+  border: medium solid;
+}
+
+.nav-icon {
   width: 32px;
   height: 32px;
+  position: absolute;
+  top: 17px;
+  left: 17px;
+  background-image: var(--nav-icon);
+  background-repeat: no-repeat;
+  background-size: cover;
   image-rendering: pixelated;
+  animation: moveUpDown 1s infinite alternate;
 }
 
-.about,
-.projects {
-  font-family: var(--ff);
+@keyframes moveUpDown {
+  from {
+    top: 14px;
+  }
+  to {
+    top: 20px;
+
+  }
 }
 
+@media (max-width: 768px) {
+  .main {
+    --nav-delay: 2000;
+  }
+}

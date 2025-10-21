@@ -1,0 +1,57 @@
+.main {
+  width: 300px;
+  aspect-ratio: 1 / 1.1;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  font-size: var(--font-default);
+  font-family: var(--ff);
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: 1 /1 ;
+  object-fit: cover;
+}
+
+.border-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.border-highlight {
+  width: 95%;
+  height: 95%;
+  border: 1ch solid white;
+  border-style: double;
+}
+
+.caption {
+  width: 20%;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  bottom: 0;
+  left: 75%;
+  transform: translate(-75%);
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  box-shadow: 1ch -.5em gray;
+}
+
+@media (max-width: 768px) {
+  .main {
+    width: 80%;
+  }
+
+  .caption {
+    width: 25%;
+  }
+}

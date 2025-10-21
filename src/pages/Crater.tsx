@@ -7,7 +7,7 @@ export default function Crater() {
     <div className={styles['main']}>
       <div className={styles['container']}>
         <Header />
-        <br/>
+        <br />
         <div className={styles['content-container']}>
           <div className={styles['title']}>Crater</div>
           <div className={styles['break']} />
@@ -26,47 +26,30 @@ export default function Crater() {
           </div>
           <div className={styles['break']} />
           <div className={styles['break']} />
-          <div className={styles['bullet']}>
-            <div style={{ width: '1ch' }} />
-            <div
-              className={styles['text-body']}
-              style={{
-                paddingLeft: 'ch',
-                boxShadow: '-2ch 0 magenta'
-              }}
-            >
+          <div className={styles['bullet-container']}>
+            <div className={styles['bullet']} />
+            <div className={styles['bullet-text']}>
               Vite + React + Typescript
             </div>
           </div>
           <div className={styles['break']} />
-          <div className={styles['bullet']}>
-            <div style={{ width: '1ch' }} />
-            <div
-              className={styles['text-body']}
-              style={{
-                paddingLeft: 'ch',
-                boxShadow: '-2ch 0 magenta'
-              }}
-            >
-              Supabase - Posgres + Edge Functions
+          <div className={styles['bullet-container']}>
+            <div className={styles['bullet']} />
+            <div className={styles['bullet-text']}>
+              Supabase - Postgres + Edge 
             </div>
           </div>
           <div className={styles['break']} />
-          <div className={styles['bullet']}>
-            <div style={{ width: '1ch' }} />
-            <div
-              className={styles['text-body']}
-              style={{
-                paddingLeft: 'ch',
-                boxShadow: '-2ch 0 magenta'
-              }}
-            >
-              Vercel
+          <div className={styles['bullet-container']}>
+            <div className={styles['bullet']} />
+            <div className={styles['bullet-text']}>
+              Vercel 
             </div>
           </div>
+
         </div>
-        <br/>
-        <Footer/>
+        <br />
+        <Footer />
       </div>
     </div>
   )
