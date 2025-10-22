@@ -9,13 +9,15 @@ export default function LonePalmIsland() {
         <div className={styles['title']}>Lone Palm Island</div>
         <div className={styles['break']}/>
         <div className={styles['text-body']}>
-          Graphics programming is a discipline that I aspire to master. 
-          A magical blend of technical wizardry and creative expression. Lone Palm Island is my 
-          first 'proper' post grad project - a shallow dive into the world of low-level graphics programming. 
+          Graphics programming is a discipline that I aspire to master - technical wizardry meets raw visual 
+          expression. Lone Palm Island is my first "proper" post-grad project - a shallow dive into the world 
+          of low-level graphics programming. 
         </div>
         <div className={styles['break']}/>
         <div className={styles['break']}/>
         <Image src={'/images/lone-palm-island.png'} pixel={false} caption={'Fig.1'}/>
+        <div className={styles['break']}/>
+        <a href={'https://github.com/jebef/lone-palm-island'} className={styles['link']}>lone-palm-island</a>
       </div>
     </PageSkeleton>
 

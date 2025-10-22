@@ -13,9 +13,9 @@ export default function About() {
         </div>
         <div className={styles['break']} />
         <div className={styles['break']} />
-        <div className={styles['bullet-container']}>
-          <div className={styles['bullet']} />
-          <div className={styles['bullet-text']}>
+        <div className={styles['bullet']}>
+          <div className={styles['bullet__point']} />
+          <div className={styles['bullet__text']}>
             B.S. EECS - UC Berkely 2024
           </div>
         </div>

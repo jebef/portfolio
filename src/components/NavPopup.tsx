@@ -8,7 +8,7 @@ export default function NavPopup({ open }: { open: boolean }) {
   const navigate = useNavigate();
   const destA = '/about';
   const destB = '/'; // TODO: make real projects page 
-  const destC = '/contact';
+  // const destC = '/contact';
 
   useEffect(() => {
     if (!mainRef.current) return;
