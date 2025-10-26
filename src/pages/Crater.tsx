@@ -8,7 +8,7 @@ export default function Crater() {
       <div className={styles['container']}>
         <Header />
         <br />
-        <div className={styles['content-container']}>
+        <div className={styles['content-container']} style={{ padding: '24px'}}>
           <div className={styles['title']}>Crater</div>
           <div className={styles['break']} />
           <div className={styles['text-body']}>
@@ -68,32 +68,50 @@ export default function Crater() {
           <div className={styles['bullet']}>
             <div className={styles['bullet__point']} style={{ backgroundColor: 'red' }} />
             <div className={styles['bullet__text']}>
-              Complexity. I was on my way to building a small social media app. Balancing my want to understand all the inner guts of my 
-              application with my core priorities and interests became too troublesome. I chose to seek an alternative to dedicated user 
-              accounts - a simpler way to provide the same service. 
+              Complexity. Balancing my want to write and understand all the inner guts of my application with my core priorities and
+              interests became too troublesome. I chose to seek a simpler alternative to provide the same service.
             </div>
           </div>
           <div className={styles['break']} />
           <div className={styles['bullet']}>
             <div className={styles['bullet__point']} style={{ backgroundColor: 'red' }} />
             <div className={styles['bullet__text']}>
-              Utility. For an app that does a single simple task, the scope of my projet was much greater than the serivice I sought to provide. 
-              Time to rethink and scale back. 
+              Utility. For an app that does a single simple task, the scope of my projet was much greater than the serivice I sought to provide.
+              Time to rethink and scale back.
             </div>
           </div>
           <div className={styles['break']} />
           <div className={styles['bullet']}>
             <div className={styles['bullet__point']} style={{ backgroundColor: 'red' }} />
             <div className={styles['bullet__text']}>
-              Reliance on evil streaming giants. Though I currently use Spotify, I am in the process of transitioning away from the platform. 
-              The company and its practices run perpendicular to my belief system. For version 2.0 I wanted to find an alternative resource that 
-              could provide similar or better music metadata. 
+              Dependency on streaming giants. Though I currently use Spotify, I am in the process of transitioning away from the platform.
+              The company and its practices run perpendicular to my belief system. For version 2.0 I wanted to find an alternative resource that
+              could provide similar or better music metadata.
             </div>
           </div>
           <div className={styles['break']} />
           <div className={styles['sub-title']}>Version 2.0 (aka crater-lite)</div>
           <div className={styles['break']} />
+          <div className={styles['text-body']}>
+            I took some time to think about the "truth" of my idea. What am I really trying to do? My conclusion: I want to share collections of
+            my favorite albums with friends and family. I want the releases to be packaged in a cute way. Sharing music is a gift!
+          </div>
+          <div className={styles['break']} />
+          <div className={styles['break']} />
+          <div className={styles['text-body']}>
+            This realization was pivotal. I decided to do away with dedicated user accounts, music collection management, etc. Now, users would
+            simply visit the site anytime they wanted to build and share a new crate. All crates would be publicly accessible via a unique key. By
+            appending this key to the end of a base link, users could view and share their crates with ease.
+          </div>
+          <div className={styles['break']} />
+          <div className={styles['break']} />
+          <div className={styles['text-body']}>
+            I made custom assetts to give the crates more life - a PS2 style rotating record bin and pixel art music gram. 
+          </div>
+          <div className={styles['break']} />
+          <div className={styles['break']} />
           <a className={styles['link']} href={'https://crater-lite.vercel.app/'}>crater</a>
+
         </div>
         <br />
         <Footer />

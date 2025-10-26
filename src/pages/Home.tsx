@@ -1,6 +1,7 @@
 import BoxLink from '../components/BoxLink';
 import styles from './projects.module.css';
 import PageSkeleton from './PageSkeleton';
+import PortraitBounce from '../components/PortraitBounce';
 
 type Project = {
   link: string;
@@ -19,13 +20,25 @@ export default function Home() {
 
   return (
     <PageSkeleton>
-      <div className={styles['box-links']}>
-        {projects.length > 0 && projects.map((p: Project) =>
-          <>
-            <BoxLink link={p.link} img={p.img} pixel={p.pixel} title={p.title} description={p.description} />
-            <br />
-          </>
-        )}
+      <div className={styles['content-container']}>
+        <div
+          style={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center'
+          }}
+        >
+          <PortraitBounce imgSrc={'/images/lone-palm-island.png'} />
+        </div>
+        <br/>
+        <div className={styles['box-links']}>
+          {projects.length > 0 && projects.map((p: Project) =>
+            <>
+              <BoxLink link={p.link} img={p.img} pixel={p.pixel} title={p.title} description={p.description} />
+              <br />
+            </>
+          )}
+        </div>
       </div>
     </PageSkeleton>
   );

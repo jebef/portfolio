@@ -17,8 +17,6 @@
 
 .content-container {
   flex: 1 1 auto;
-  font-size: var(--font-larger);
-  padding: .5em;
   overflow-y: scroll;
 }
 
@@ -44,6 +42,7 @@
   color: white;
   font-family: var(--ff);
   font-size: var(--font-large);
+  border-bottom: medium solid blue;
 }
 
 .text-body {
@@ -92,13 +91,13 @@
 }
 
 .link:hover {
-  cursor: crosshair;
+  cursor:pointer;
 }
 
 .box-links {
   flex: 1 1 auto;
   width: 100%;
-  overflow-y: scroll;
+  font-size: var(--font-default);
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;

@@ -5,7 +5,7 @@ import styles from './projects.module.css';
 export default function Postcard() {
   return (
     <PageSkeleton>
-      <div className={styles['content-container']}>
+      <div className={styles['content-container']} style={{ padding: '24px'}}>
         <div className={styles['title']}>Dive Into 2025!</div>
         <div className={styles['break']} />
         <div className={styles['text-body']}>

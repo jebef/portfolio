@@ -1,0 +1,45 @@
+.main {
+  --font-height: 16px;
+  --font-width: 8px;
+  width: round(50%, var(--font-height));
+  aspect-ratio: 1 / 1;
+  align-self: center;
+  position: relative;
+}
+
+.ascii-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+}
+
+.ascii-cell {
+  width: var(--font-width);
+  height: var(--font-height);
+  text-align: center;
+  line-height: 1;
+  font-family: var(--ff);
+  font-size: var(--font-height);
+}
+
+.border {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  border: solid thick rgba(255, 0, 255, .7);
+}
+
+
+@media (max-width: 768px) {
+  .main {
+    --font-height: 8px;
+    --font-width: 4px;
+    width: round(80%, var(--font-height));
+  }
+
+  .border {
+    border: solid medium rgba(255, 0, 255, .7);
+  }
+}

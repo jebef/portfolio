@@ -5,7 +5,7 @@ import Image from '../components/Image';
 export default function LonePalmIsland() {
   return (
     <PageSkeleton>
-      <div className={styles['content-container']}>
+      <div className={styles['content-container']} style={{ padding: '24px'}}>
         <div className={styles['title']}>Lone Palm Island</div>
         <div className={styles['break']}/>
         <div className={styles['text-body']}>
