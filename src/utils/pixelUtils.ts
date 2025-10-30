@@ -34,7 +34,7 @@ export function imageToAscii(
   pixelData: PixelData,
   numRows: number,
   numCols: number,
-  charDensity =  '.░▒▓██',
+  charDensity = '.░▒▓██',
   colorThresh = 125.5
 ): { chars: string[], colors: any[] } {
   const { data, width, height } = pixelData;
@@ -51,14 +51,14 @@ export function imageToAscii(
   const rowStep = Math.floor(height / numRows);
   const colStep = Math.floor(width / numCols);
   const chars: string[] = [];
-  const colors: any[] = []; // black, blue, green, cyan, red, magenta, yellow, white
+  const colors: any[] = [];
 
-  for (let r = 0; r < numRows; r++) {
-    for (let c = 0; c < numCols; c++) {
+  for (let row = 0; row < numRows; row++) {
+    for (let col = 0; col < numCols; col++) {
       let totalR = 0, totalG = 0, totalB = 0, count = 0;
 
-      for (let y = r * rowStep; y < (r + 1) * rowStep; y++) {
-        for (let x = c * colStep; x < (c + 1) * colStep; x++) {
+      for (let y = row * rowStep; y < (row + 1) * rowStep; y++) {
+        for (let x = col * colStep; x < (col + 1) * colStep; x++) {
           const p = getPixel(x, y);
           totalR += p.r;
           totalG += p.g;
@@ -71,10 +71,10 @@ export function imageToAscii(
       const avgG = totalG / count;
       const avgB = totalB / count;
 
-      const palR = avgR < colorThresh ? 0 : 255;
-      const palG = avgG < colorThresh ? 0 : 255;
-      const palB = avgB < colorThresh ? 0 : 255;
-      colors.push({ palR, palG, palB});
+      const r = avgR < colorThresh ? 0 : 255;
+      const g = avgG < colorThresh ? 0 : 255;
+      const b = avgB < colorThresh ? 0 : 255;
+      colors.push({ r, g, b });
 
       const brightness = 0.299 * avgR + 0.587 * avgG + 0.114 * avgB;
 
@@ -85,5 +85,5 @@ export function imageToAscii(
     }
   }
 
-  return {chars, colors};
+  return { chars, colors };
 }

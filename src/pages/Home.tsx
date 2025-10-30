@@ -28,7 +28,7 @@ export default function Home() {
             justifyContent: 'center'
           }}
         >
-          <PortraitBounce imgSrc={'/images/lone-palm-island.png'} />
+          <PortraitBounce srcs={['/images/aud.jpg', '/images/quote-2-big.png']} />
         </div>
         <br/>
         <div className={styles['box-links']}>

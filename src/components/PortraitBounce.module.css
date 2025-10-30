@@ -31,6 +31,15 @@
   border: solid thick rgba(255, 0, 255, .7);
 }
 
+.progress-bar {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  color: rgb(0, 255, 0);
+  background-color: black;
+  font-family: var(--ff);
+}
+
 
 @media (max-width: 768px) {
   .main {

@@ -2,14 +2,39 @@ import { useEffect, useState, useRef } from 'react';
 import { loadImageData, imageToAscii } from '../utils/pixelUtils';
 import styles from './PortraitBounce.module.css';
 
-export default function PortraitBounce({ imgSrc }: { imgSrc: string }) {
+type ProcessedImage = {
+  chars: string[];
+  colors: { r: number, g: number, b: number }[];
+};
+
+interface BallState {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+}
+
+export default function PortraitBounce({ srcs }: { srcs: string[] }) {
   const gridRef = useRef<HTMLDivElement>(null);
-  const cellRefs = useRef<HTMLDivElement[]>([]); // store refs to each cell
-  const [chars, setChars] = useState<string[]>([]);
-  const [colors, setColors] = useState<{ palR: number; palG: number; palB: number }[]>([]);
+  const cellRefs = useRef<HTMLDivElement[]>([]);
+
   const [numCols, setNumCols] = useState(0);
   const [numRows, setNumRows] = useState(0);
 
+  const [images, setImages] = useState<ProcessedImage[]>([]);
+  const imageIndex = useRef<number>(0);
+  const seenCells = useRef<Set<number>>(new Set());
+
+  const progressRef = useRef<HTMLDivElement>(null);
+
+  const ball = useRef<BallState>(
+    {
+      x: 1,
+      y: 1,
+      vx: 1,
+      vy: 1
+    }
+  );
 
   //--- CONSTRUCT GRID ---///
   useEffect(() => {
@@ -32,236 +57,124 @@ export default function PortraitBounce({ imgSrc }: { imgSrc: string }) {
     grid.style.gridTemplateRows = `repeat(${rows}, ${cellHeight}px)`;
   }, []);
 
-  // --- LOAD IMAGE & BUILD GRID --- //
+  //--- LOAD IMAGES ---//
   useEffect(() => {
-    if (!imgSrc || !numCols || !numRows) return;
+    if (!srcs || !numCols || !numRows) return;
 
-    (async () => {
-      try {
-        const pixelData = await loadImageData(imgSrc);
-        const { chars, colors } = imageToAscii(pixelData, numRows, numCols);
-        setChars(chars);
-        setColors(colors);
-      } catch (err) {
-        console.error(err);
+    const loadImages = async () => {
+      const loaded: ProcessedImage[] = [];
+      for (const src of srcs) {
+        try {
+          const pixelData = await loadImageData(src);
+          const res: ProcessedImage = imageToAscii(pixelData, numRows, numCols);
+          loaded.push(res);
+        } catch (err) {
+          console.error(err);
+        }
       }
-    })();
-  }, [imgSrc, numCols, numRows]);
+      setImages(loaded);
+    }
 
+    loadImages();
+  }, [srcs, numCols, numRows]);
 
-  const [ball, setBall] = useState({
-    x: 0,
-    y: 0,
-    vx: 0,
-    vy: 0,
-  });
-
-  const [ballB, setBallB] = useState({
-    x: 0,
-    y: 0,
-    vx: 0,
-    vy: 0,
-  });
-
-  const [ballC, setBallC] = useState({
-    x: 0,
-    y: 0,
-    vx: 0,
-    vy: 0,
-  });
-
+  //--- UPDATE IMAGE AND BALL(S) ---// 
   useEffect(() => {
-    setBall({
-      x: 1,
-      y: 1,
-      vx: 1,
-      vy: 1
-    });
+    if (!numRows || !numCols || images.length === 0 || !progressRef.current) return;
 
-    setBallB({
-      x: numCols / 2,
-      y: numRows / 2,
-      vx: -1,
-      vy: -1
-    });
-
-    setBallC({
-      x: numCols / 2,
-      y: numRows / 2,
-      vx: 1,
-      vy: 1
-    });
-  }, [numRows, numCols]);
-
-  useEffect(() => {
     const interval = setInterval(() => {
-      setBall((prev) => {
-        let { x, y, vx, vy } = prev;
+      /// update cell ///
+      const seen = seenCells.current;
+      const nextImageIndex = (imageIndex.current + 1) % images.length;
+      const ballState = ball.current;
+      const cellIndex = ballState.y * numCols + ballState.x;
+      const newCell = cellRefs.current[cellIndex];
 
-        if (x <= 0 || x >= numCols - 1) vx = -vx;
-        if (y <= 0 || y >= numRows - 1) vy = -vy;
-
-        return { x: x + vx, y: y + vy, vx, vy };
-      });
-
-      // setBallB((prev) => {
-      //   let { x, y, vx, vy } = prev;
-
-      //   if (x <= 0 || x >= numCols - 1) vx = -vx;
-      //   if (y <= 0 || y >= numRows - 1) vy = -vy;
-
-      //   return { x: x + vx, y: y + vy, vx, vy };
-      // });
-      setBallB((prev) => {
-        let { x, y, vx, vy } = prev;
-
-        if (x <= 0 || x >= numCols - 1) {
-          vx = -vx;
-          const seed = Math.round(Math.random() * 2);
-          switch (seed) {
-            case 0:
-              vy = 0;
-              break;
-            case 1:
-              vy = 1;
-              break;
-            case 2:
-              vy = -1;
-              break;
-          }
+      if (!seen.has(cellIndex)) {
+        // update character 
+        newCell.innerHTML = images[nextImageIndex].chars[cellIndex];
+        // update color 
+        const newColor = images[nextImageIndex].colors[cellIndex];
+        newCell.style.color = `rgb(${newColor.r}, ${newColor.g}, ${newColor.b})`;
+        // add cell to seen set
+        seen.add(cellIndex);
+      } else {
+        // flip color 
+        // const style = getComputedStyle(newCell);
+        // const currentColor = style.color.match(/\d+/g);
+        // if (currentColor) {
+        //   const [r, g, b] = currentColor.map(Number);
+        //   const newR = r === 255 ? 0 : 255;
+        //   const newG = g === 255 ? 0 : 255;
+        //   const newB = b === 255 ? 0 : 255;
+        //   newCell.style.color = `rgb(${newR}, ${newG}, ${newB})`;
+        // }
+        // update image index and clear seen set
+        if (seen.size === numRows * numCols) {
+          imageIndex.current = nextImageIndex;
+          seen.clear();
         }
+      }
 
-        if (y <= 0 || y >= numRows - 1) {
-          vy = -vy;
-          const seed = Math.round(Math.random() * 2);
-          switch (seed) {
-            case 0:
-              vx = 0;
-              break;
-            case 1:
-              vx = 1;
-              break;
-            case 2:
-              vx = -1;
-              break;
-          }
+      /// update ball state ///
+      let { x, y, vx, vy } = ballState;
+
+      const xOut = (x <= 0 || x >= numCols - 1);
+      const yOut = (y <= 0 || y >= numRows - 1);
+      const seed3 = Math.round(Math.random() * 2);
+
+      if (xOut && yOut) {
+        vx *= -1;
+        vy *= -1;
+      } else if (xOut) {
+        vx *= -1;
+        switch (seed3) {
+          case 1:
+            vy = 1;
+            break;
+          case 2:
+            vy = -1;
+            break;
+          default:
+            vy = 0;
+            break;
         }
-
-        return { x: x + vx, y: y + vy, vx, vy };
-      });
-
-      setBallC((prev) => {
-        let { x, y, vx, vy } = prev;
-
-        if (x <= 0 || x >= numCols - 1) {
-          vx = -vx;
-          const seed = Math.round(Math.random() * 2);
-          switch (seed) {
-            case 0:
-              vy = 0;
-              break;
-            case 1:
-              vy = 1;
-              break;
-            case 2:
-              vy = -1;
-              break;
-          }
+      } else if (yOut) {
+        vy *= -1;
+        switch (seed3) {
+          case 1:
+            vx = 1;
+            break;
+          case 2:
+            vx = -1;
+            break;
+          default:
+            vx = 0;
+            break;
         }
+      }
 
-        if (y <= 0 || y >= numRows - 1) {
-          vy = -vy;
-          const seed = Math.round(Math.random() * 2);
-          switch (seed) {
-            case 0:
-              vx = 0;
-              break;
-            case 1:
-              vx = 1;
-              break;
-            case 2:
-              vx = -1;
-              break;
-          }
-        }
+      ball.current = {
+        x: x + vx,
+        y: y + vy,
+        vx: vx,
+        vy: vy
+      };
 
-        return { x: x + vx, y: y + vy, vx, vy };
-      });
-    }, 25);
+      /// update progress bar ///
+      progressRef.current!.innerHTML = ` ${((seen.size / (numRows * numCols)) * 100).toFixed(2)}%`;
+      
+    }, 10);
 
     return () => clearInterval(interval);
-  }, [numCols, numRows]);
+  }, [numCols, numRows, images]);
 
-  // --- UPDATE COLOR ON MOVE --- //
-  const previousIndex = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (!numCols || !colors.length || !gridRef.current) return;
-
-    const index = ball.y * numCols + ball.x;
-    const indexB = ballB.y * numCols + ballB.x;
-    const indexC = ballC.y * numCols + ballC.x;
-    // const prevIndex = previousIndex.current;
-
-    // If we’ve moved, invert the color at the new cell
-    const newCell = cellRefs.current[index];
-    if (newCell) {
-      const style = getComputedStyle(newCell);
-      const currentColor = style.color.match(/\d+/g);
-      if (currentColor) {
-        const [r, g, b] = currentColor.map(Number);
-        const newR = r === 255 ? 0 : 255;
-        const newG = g === 255 ? 0 : 255;
-        const newB = b === 255 ? 0 : 255;
-        newCell.style.color = `rgb(${newR}, ${newG}, ${newB})`;
-      }
-    }
-
-    const newCellB = cellRefs.current[indexB];
-    if (newCellB) {
-      const style = getComputedStyle(newCellB);
-      const currentColor = style.color.match(/\d+/g);
-      if (currentColor) {
-        const [r, g, b] = currentColor.map(Number);
-        const newR = r === 255 ? 0 : 255;
-        const newG = g === 255 ? 0 : 255;
-        const newB = b === 255 ? 0 : 255;
-        newCellB.style.color = `rgb(${newR}, ${newG}, ${newB})`;
-      }
-    }
-
-    const newCellC = cellRefs.current[indexC];
-    if (newCellC) {
-      const style = getComputedStyle(newCellC);
-      const currentColor = style.color.match(/\d+/g);
-      if (currentColor) {
-        const [r, g, b] = currentColor.map(Number);
-        const newR = r === 255 ? 0 : 255;
-        const newG = g === 255 ? 0 : 255;
-        const newB = b === 255 ? 0 : 255;
-        newCellC.style.color = `rgb(${newR}, ${newG}, ${newB})`;
-      }
-    }
-
-    // Optional: revert or modify the previous cell if needed
-    // e.g. if you want a trail effect or revert to original color
-    // if (prevIndex !== null) {
-    //   const prevCell = cellRefs.current[prevIndex];
-    //   if (prevCell) {
-    //     const origColor = colors[prevIndex];
-    //     prevCell.style.color = `rgb(${origColor.r}, ${origColor.g}, ${origColor.b})`;
-    //   }
-    // }
-
-    previousIndex.current = index;
-  }, [ball, ballB, ballC, numCols, colors]);
-
-  console.log(ballB);
+  console.log("Render!");
 
   return (
     <div className={styles.main}>
       <div ref={gridRef} className={styles['ascii-grid']}>
-        {chars.map((c, i) => (
+        {images[0]?.chars.map((c, i) => (
           <div
             key={i}
             ref={(el) => {
@@ -269,12 +182,14 @@ export default function PortraitBounce({ imgSrc }: { imgSrc: string }) {
             }}
             className={styles['ascii-cell']}
             style={{
-              color: `rgb(${colors[i].palR ?? 255}, ${colors[i].palG ?? 255}, ${colors[i].palB ?? 255})`,
+              color: `rgb(${images[0].colors[i].r ?? 255}, ${images[0].colors[i].g ?? 255}, ${images[0].colors[i].b ?? 255})`,
             }}
           >
             {c}
           </div>
         ))}
+      </div>
+      <div ref={progressRef} className={styles['progress-bar']}>
       </div>
     </div>
   );
