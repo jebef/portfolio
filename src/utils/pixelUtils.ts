@@ -35,7 +35,7 @@ export function imageToAscii(
   numRows: number,
   numCols: number,
   charDensity = '.░▒▓██',
-  colorThresh = 125.5
+  colorThresh = 127.5
 ): { chars: string[], colors: any[] } {
   const { data, width, height } = pixelData;
   const getPixel = (x: number, y: number) => {

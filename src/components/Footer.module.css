@@ -11,6 +11,8 @@
   padding-left: 1ch;
   padding-right: 2ch;
   background-color: gray;
+
+  justify-self: flex-end;
 }
 
 .copyright {

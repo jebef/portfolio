@@ -1,7 +1,6 @@
-import BoxLink from '../components/BoxLink';
+import PageSkeleton from "./PageSkeleton"
+import BoxLink from "../components/BoxLink";
 import styles from './projects.module.css';
-import PageSkeleton from './PageSkeleton';
-import PortraitBounce from '../components/PortraitBounce';
 
 type Project = {
   link: string;
@@ -11,7 +10,7 @@ type Project = {
   description: string;
 }
 
-export default function Home() {
+export default function Projects() {
   const projects: Project[] = [
     { link: '/projects/crater', img: '/images/crater-tile.png', pixel: true, title: 'Crater', description: 'Digital Music Gram' },
     { link: '/projects/lone-palm-island', img: '/images/lone-palm-island.png', pixel: false, title: 'Lone Palm Island', description: 'A 3D Demo Written in C++' },
@@ -20,32 +19,16 @@ export default function Home() {
 
   return (
     <PageSkeleton>
-      <div className={styles['static-container']}>
-        <div className={styles['ascii']}>
-          <div className={styles['ascii__text']}>
-            Welcome, Digital Traveller!
-          </div>
-          <div className={styles['ascii__image']}>
-            <PortraitBounce
-              srcs={[
-                '/images/ascii/lil-wy.webp',
-                '/images/ascii/seventh-grade.webp',
-                '/images/ascii/halloween.webp'
-              ]}
-            />
-          </div>
-        </div>
-      </div>
-    </PageSkeleton>
-  );
-}
-
-
-{/* <div className={styles['box-links']}>
+      <div className={styles['content-container']}>
+        <div className={styles['box-links']}>
           {projects.length > 0 && projects.map((p: Project) =>
             <>
               <BoxLink link={p.link} img={p.img} pixel={p.pixel} title={p.title} description={p.description} />
               <br />
             </>
           )}
-        </div> */}
+        </div>
+      </div>
+    </PageSkeleton>
+  )
+}
