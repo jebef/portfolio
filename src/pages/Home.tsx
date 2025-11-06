@@ -13,9 +13,10 @@ export default function Home() {
           <div className={styles['ascii__image']}>
             <PortraitBounce
               srcs={[
-                '/images/ascii/lil-wy.webp',
-                '/images/ascii/seventh-grade.webp',
-                '/images/ascii/halloween.webp'
+                '/images/ascii/parrot.webp',
+                '/images/ascii/halloween.webp',
+                '/images/ascii/cat.webp',
+                '/images/ascii/warp-selfie.webp'
               ]}
             />
           </div>

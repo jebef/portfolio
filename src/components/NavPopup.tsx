@@ -7,13 +7,12 @@ export default function NavPopup({ open }: { open: boolean }) {
   const [navDelay, setNavDelay] = useState(0);
   const navigate = useNavigate();
   const destA = '/about';
-  const destB = '/projects'; 
-  // const destC = '/contact';
+  const destB = '/projects';
 
   useEffect(() => {
     if (!mainRef.current) return;
     setNavDelay(Number(getComputedStyle(mainRef.current).getPropertyValue('--nav-delay')));
-  },[mainRef.current])
+  }, [mainRef.current])
 
   const handleANavClick = () => {
     setTimeout(() => {
@@ -29,7 +28,6 @@ export default function NavPopup({ open }: { open: boolean }) {
 
   const handleCNavClick = () => {
     setTimeout(() => {
-      //navigate(destC);
       window.location.href = "/files/Resume2025.pdf";
     }, navDelay);
   }
@@ -38,8 +36,8 @@ export default function NavPopup({ open }: { open: boolean }) {
     <div
       className={styles['main']}
       style={{
-        height: open ? '214px' : '0px',
-        minHeight: open ? '214px' : '0px'
+        height: open ? '212px' : '0px',
+        minHeight: open ? '212px' : '0px'
       }}
       ref={mainRef}
     >
@@ -107,7 +105,7 @@ export default function NavPopup({ open }: { open: boolean }) {
           <div className={styles['nav-icon']} />
         </div>
       </div>
+      <div className={styles['black-out']}></div>
     </div>
-
   );
 }

@@ -5,7 +5,7 @@ import styles from './projects.module.css';
 export default function Postcard() {
   return (
     <PageSkeleton>
-      <div className={styles['content-container']} style={{ padding: '24px'}}>
+      <div className={styles['content-container']} style={{ padding: '24px' }}>
         <div className={styles['title']}>Dive Into 2025!</div>
         <div className={styles['break']} />
         <div className={styles['text-body']}>
@@ -13,7 +13,15 @@ export default function Postcard() {
         </div>
         <div className={styles['break']} />
         <div className={styles['break']} />
-        <Image src={'/images/dive-into-2025-front.png'} pixel={false} caption={'Fig.1'} />
+        <div className={styles['mixed-container']}>
+          <div className={styles['image-container']}>
+            <Image src={'/images/postcard/usarians.webp'} pixel={false} scale={1} backgroundColor='none' caption={'Fig.1'} />
+          </div>
+          <div className={styles['image-container']}>
+            <Image src={'/images/postcard/usarians.webp'} pixel={false} scale={1} backgroundColor='none' caption={'Fig.1'} />
+          </div>
+        </div>
+        <div className={styles['break']} />
       </div>
     </PageSkeleton>
   )

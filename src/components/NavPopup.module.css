@@ -5,9 +5,9 @@
   box-sizing: border-box;
   background-color: gray;
   color: white;
-  gap: 2ch;
   padding-left: 1ch;
-  padding-right: 2ch;
+  display: flex;
+  gap: 20px;;
 
   --nav-delay: 0;
 }
@@ -288,12 +288,22 @@
   }
   to {
     top: 20px;
-
   }
+}
+
+.black-out {
+  flex: 1 1 auto;
+  background-color: black;
 }
 
 @media (max-width: 768px) {
   .main {
     --nav-delay: 2000;
+    gap: 0px;
+  }
+
+  .black-out {
+    width: 0px;
+    height: 0px;
   }
 }

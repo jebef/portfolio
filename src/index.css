@@ -14,9 +14,11 @@
 :root {
   --ff: 'WEB IBM VGA 8x16';
   --font-default: 16px;
+  --font-text: 20px;
   --font-medium: 18px;
   --font-large: 32px;
   --font-larger: 48px;
+  --border-medium: 4px;
   background-color: black;
 }
 

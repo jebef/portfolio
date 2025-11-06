@@ -1,6 +1,7 @@
 import styles from './projects.module.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Image from '../components/Image';
 
 export default function Crater() {
   return (
@@ -8,7 +9,7 @@ export default function Crater() {
       <div className={styles['container']}>
         <Header />
         <br />
-        <div className={styles['content-container']} style={{ padding: '24px'}}>
+        <div className={styles['content-container']} style={{ padding: '24px' }}>
           <div className={styles['title']}>Crater</div>
           <div className={styles['break']} />
           <div className={styles['text-body']}>
@@ -68,25 +69,25 @@ export default function Crater() {
           <div className={styles['bullet']}>
             <div className={styles['bullet__point']} style={{ backgroundColor: 'red' }} />
             <div className={styles['bullet__text']}>
-              Complexity. Balancing my want to write and understand all the inner guts of my application with my core priorities and
-              interests became too troublesome. I chose to seek a simpler alternative to provide the same service.
+              Complexity and utility. For an app that does a single simple task, the scope of my projet was much greater than
+              the serivice I sought to provide. Time to rethink and scale back.
             </div>
           </div>
           <div className={styles['break']} />
           <div className={styles['bullet']}>
             <div className={styles['bullet__point']} style={{ backgroundColor: 'red' }} />
             <div className={styles['bullet__text']}>
-              Utility. For an app that does a single simple task, the scope of my projet was much greater than the serivice I sought to provide.
-              Time to rethink and scale back.
+              Lacking mobile support. My first iterations prioritized desktop/laptop use and failed to cleanly scale down
+              for mobile users. In order to make my app as accessible as possible, I knew it needed to be usable from any device.
             </div>
           </div>
           <div className={styles['break']} />
           <div className={styles['bullet']}>
             <div className={styles['bullet__point']} style={{ backgroundColor: 'red' }} />
             <div className={styles['bullet__text']}>
-              Dependency on streaming giants. Though I currently use Spotify, I am in the process of transitioning away from the platform.
-              The company and its practices run perpendicular to my belief system. For version 2.0 I wanted to find an alternative resource that
-              could provide similar or better music metadata.
+              Dependency on streaming giants. Though companies such as Spotify and Apple Music provide rich, familiar, and easy to use
+              music metadata APIs, making them an integral part of my app alienated potential users who don't use streaming services.
+              For version 2.0 I sought to find an alternative resource that could provide similar or better music metadata.
             </div>
           </div>
           <div className={styles['break']} />
@@ -106,12 +107,41 @@ export default function Crater() {
           <div className={styles['break']} />
           <div className={styles['break']} />
           <div className={styles['text-body']}>
-            I made custom assetts to give the crates more life - a PS2 style rotating record bin and pixel art music gram. 
+            My music metadata solution: MusicBrainz! Free, open-source, and incredibly rich with hyper specifc data, MusicBrainz turned out to be an 
+            ideal alternative to Spotify. 
           </div>
           <div className={styles['break']} />
           <div className={styles['break']} />
-          <a className={styles['link']} href={'https://crater-lite.vercel.app/'}>crater</a>
-
+          <div
+            className={styles['mixed-container']}
+            style={{
+              gap: '20px'
+            }}
+          >
+            <div className={styles['mixed-container__text']}>
+              <div
+                className={styles['text-body']}
+                style={{
+                  height: 'fit-content'
+                }}
+              >
+                I made custom assetts to give the crates more life - a PS2 style rotating record bin and pixel art music gram.
+                <span style={{ color: 'yellow' }}> Figure 1</span> shows a still from the crate animation. I modified a stock image of a milk
+                crate to create the texture, built a simple model in Blender, and animated it to rotate around the y-axis in a loop.
+              </div>
+              <div className={styles['text-body']}>
+                To checkout Crater for yourself, use the link below!
+              </div>
+              <a className={styles['link']} href={'https://crater-lite.vercel.app/'}>crater</a>
+            </div>
+            <Image 
+              src='/images/crater/crate-animation-still.webp' 
+              pixel={true} 
+              scale={1} 
+              backgroundColor='magenta' 
+              caption='Fig.1' 
+            />
+          </div>
         </div>
         <br />
         <Footer />

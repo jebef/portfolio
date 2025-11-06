@@ -6,11 +6,22 @@
   position: relative;
   font-size: var(--font-default);
   font-family: var(--ff);
+  flex: 0 0 auto;
+  --border-color: white;
+  --caption-background-color: yellow;
+  --caption-color: black;
+}
+
+.main:hover {
+  --border-color: magenta;
+  --caption-background-color: blue;
+  --caption-color: magenta;
+  cursor: crosshair;
 }
 
 .img {
   width: 100%;
-  aspect-ratio: 1 /1 ;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
@@ -27,7 +38,7 @@
 .border-highlight {
   width: 95%;
   height: 95%;
-  border: 1ch solid white;
+  border: 1ch solid var(--border-color);
   border-style: double;
 }
 
@@ -38,11 +49,11 @@
   bottom: 0;
   left: 75%;
   transform: translate(-75%);
-  background-color: yellow;
+  background-color: var(--caption-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: var(--caption-color);
   box-shadow: 1ch -.5em gray;
 }
 
