@@ -25,12 +25,18 @@
 html,
 body,
 #root {
-  width: 100%;
+  width: 100vw;
   height: 100dvh; /* dynamic viewport height */
   margin: 0;
   padding: 0;
   overflow: hidden;
   -webkit-font-smoothing: none;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
 
 

@@ -5,7 +5,7 @@ import Image from '../components/Image';
 export default function LonePalmIsland() {
   return (
     <PageSkeleton>
-      <div className={styles['content-container']} style={{ padding: '24px' }}>
+      <div className={styles['content-container']}>
         <div className={styles['title']}>Lone Palm Island</div>
         <div className={styles['break']} />
         <div className={styles['mixed-container']}>
@@ -30,6 +30,13 @@ export default function LonePalmIsland() {
         </div>
         <div className={styles['sub-title']}>Inspiration</div>
         <div className={styles['break']} />
+        <div className={styles['text-body']}>
+          LEGOs and surfing. Two pasttimes that defined my early years and continue to play a large role in my adult life. <span style={{ color: 'yellow' }}>Figure 2</span> shows
+          the box art for set 6254 - Rocky Reef. As a kid, I was priveleged enough to inherit my Dad's LEGO collection. Among cracked space helmets
+          and arched monorail tracks lay the original palm. It's structure and design greatly inspired the aesthetic of this project.
+        </div>
+        <div className={styles['break']} />
+        <div className={styles['break']} />
         <div className={styles['mixed-container']}>
           <Image
             src='/images/lone-palm-island/lego.webp'
@@ -40,12 +47,16 @@ export default function LonePalmIsland() {
           />
           <div className={styles['mixed-container__text']}>
             <div className={styles['text-body']}>
-              LEGOs and surfing. Two pasttimes that defined my early years and continue to play a large role in my adult life. <span style={{ color: 'yellow' }}>Figure 2</span> shows
-              the box art for set 6254 - Rocky Reef.
+              Surfing - another gift passed down by my Dad. From sixth grade on, the ocean came to dominate my
+              imagination and free time. I've logged countless hours cruising highway one in search of novelty peaks
+              and empty lineups. Total time in the water, unknown.
+            </div>
+            <div className={styles['text-body']}>
+              As an undergrad at Berkeley, I began to develop a new equally powerful obsession: computer graphics. Combining pixels
+              and the Pacific felt like a natural next step.
             </div>
           </div>
         </div>
-
         <div className={styles['break']} />
         <div className={styles['sub-title']}>Process</div>
         <div className={styles['break']} />
@@ -59,17 +70,22 @@ export default function LonePalmIsland() {
         <div className={styles['break']} />
         <div className={styles['text-body']}>
           Upon reaching the chapter "Advanced OpenGL", I felt ready to build my first bespoke 3D demo. My goal:
-          create an oceanic scene with "realistic" water. Novice shader and modeling skills lead me to pursue a low-poly retro aesthetic.
-          How do you breathe life into a digital ocean modeled as a flat plane? Terrain + dynamic textures. 
+          create a simple oceanic scene. Novice shader and modeling skills proved complimentary to the low-poly look
+          I wanted to achieve. But how do you breathe life into a digital ocean modeled as a flat plane? Textures and terrain!
         </div>
         <div className={styles['break']} />
         <div className={styles['break']} />
         <div className={styles['text-body']}>
-          The palm tree was
+          ...
         </div>
         <div className={styles['break']} />
         <div className={styles['break']} />
         <div className={styles['sub-title']}>Closing Thoughts</div>
+        <div className={styles['break']} />
+        <div className={styles['text-body']}>
+          ...
+        </div>
+        <div className={styles['break']} />
         <div className={styles['break']} />
         <a href={'https://github.com/jebef/lone-palm-island'} className={styles['link']}>lone-palm-island</a>
       </div>

@@ -27,16 +27,22 @@ export default function Image({ src, pixel, scale, backgroundColor, caption }: I
         className={styles['main']}
         onClick={handleClick}
       >
-        <img
-          className={styles['img']}
-          src={src}
+        <div 
+          className={styles['img-container']}
           style={{
-            imageRendering: pixel ? 'pixelated' : undefined,
-            scale,
             backgroundColor
           }}
-        />
-        <div 
+        >
+          <img
+            className={styles['img']}
+            src={src}
+            style={{
+              imageRendering: pixel ? 'pixelated' : undefined,
+              scale
+            }}
+          />
+        </div>
+        <div
           className={styles['border-container']}
         >
           <div className={styles['border-highlight']} />
@@ -46,7 +52,7 @@ export default function Image({ src, pixel, scale, backgroundColor, caption }: I
         </div>
       </div>
       {open &&
-        <ImagePopup src={src} pixel={pixel} onClose={handleClose}/>
+        <ImagePopup src={src} pixel={pixel} onClose={handleClose} />
       }
     </>
   )

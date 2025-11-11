@@ -18,7 +18,7 @@ export default function Postcard() {
             <Image src={'/images/postcard/usarians.webp'} pixel={false} scale={1} backgroundColor='none' caption={'Fig.1'} />
           </div>
           <div className={styles['image-container']}>
-            <Image src={'/images/postcard/usarians.webp'} pixel={false} scale={1} backgroundColor='none' caption={'Fig.1'} />
+            <Image src={'/images/postcard/front.webp'} pixel={false} scale={1.1} backgroundColor='none' caption={'Fig.2'} />
           </div>
         </div>
         <div className={styles['break']} />

@@ -19,7 +19,12 @@ export default function Projects() {
 
   return (
     <PageSkeleton>
-      <div className={styles['content-container']}>
+      <div 
+        className={styles['content-container']}
+        style={{
+          padding: '0px 0px'
+        }}
+      >
         <div className={styles['box-links']}>
           {projects.length > 0 && projects.map((p: Project) =>
             <>

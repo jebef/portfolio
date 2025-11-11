@@ -8,8 +8,8 @@ export default function Crater() {
     <div className={styles['main']}>
       <div className={styles['container']}>
         <Header />
-        <br />
-        <div className={styles['content-container']} style={{ padding: '24px' }}>
+        <div className={styles['break']} />
+        <div className={styles['content-container']}>
           <div className={styles['title']}>Crater</div>
           <div className={styles['break']} />
           <div className={styles['text-body']}>
@@ -19,6 +19,8 @@ export default function Crater() {
             sharing a "playlist" of releases is simply not easy or sexy... until now!
           </div>
           <div className={styles['break']} />
+          <div className={styles['break']} />
+          <div className={styles['sub-title']}>Version 1.0</div>
           <div className={styles['break']} />
           <div className={styles['text-body']}>
             Initially, my ambition for this project was strong. My vision: a platform where users could<span> (a) </span>
@@ -36,7 +38,7 @@ export default function Crater() {
           </div>
           <div className={styles['break']} />
           <div className={styles['break']} />
-          <div className={styles['sub-title']}>The Good:</div>
+          <div className={styles['sub-title']}>The Good</div>
           <div className={styles['break']} />
           <div className={styles['bullet']}>
             <div className={styles['bullet__point']} style={{ backgroundColor: 'rgb(0, 255, 0)' }} />
@@ -49,8 +51,7 @@ export default function Crater() {
           <div className={styles['bullet']}>
             <div className={styles['bullet__point']} style={{ backgroundColor: 'rgb(0, 255, 0)' }} />
             <div className={styles['bullet__text']}>
-              Responisve layout and components. All pages scaled smoothly and I wrote a hacky JS tool to dynamically adjust the font size for
-              release titles and other metadata.
+              Responisve components. I wrote a hacky JS tool to dynamically adjust the font size for release titles and other metadata.
             </div>
           </div>
           <div className={styles['break']} />
@@ -58,19 +59,18 @@ export default function Crater() {
             <div className={styles['bullet__point']} style={{ backgroundColor: 'rgb(0, 255, 0)' }} />
             <div className={styles['bullet__text']}>
               Solid backend. Version 1.0 included a custom Node server with a PKCE auth flow to connect to Spotify's Web API. This server also
-              handled user sign-up/sign-in and communicated with a local Postgres database to ensure persistence. One evening, a friend politely asked
-              why I was writing a backend user login flow. Why make a shittier version of something that is ubiquitous and widely available for free?
-              Version 1.1 cut the Node server entirely, relying on Supabase to handle data storage, security, and calls to Spotify.
+              handled user sign-up/sign-in and communicated with a local Postgres database to ensure persistence. Further into development, I
+              chose to cut the Node server entirely, relying on Supabase to handle data storage, security, and calls to Spotify.
             </div>
           </div>
           <div className={styles['break']} />
-          <div className={styles['sub-title']}>The Bad:</div>
+          <div className={styles['sub-title']}>The Bad</div>
           <div className={styles['break']} />
           <div className={styles['bullet']}>
             <div className={styles['bullet__point']} style={{ backgroundColor: 'red' }} />
             <div className={styles['bullet__text']}>
               Complexity and utility. For an app that does a single simple task, the scope of my projet was much greater than
-              the serivice I sought to provide. Time to rethink and scale back.
+              the service I sought to provide. Time to rethink and scale back.
             </div>
           </div>
           <div className={styles['break']} />
@@ -107,43 +107,63 @@ export default function Crater() {
           <div className={styles['break']} />
           <div className={styles['break']} />
           <div className={styles['text-body']}>
-            My music metadata solution: MusicBrainz! Free, open-source, and incredibly rich with hyper specifc data, MusicBrainz turned out to be an 
-            ideal alternative to Spotify. 
+            My music metadata solution: <a href={'https://musicbrainz.org'} style={{ color: 'blue' }}>MusicBrainz!</a> Free, open-source, and incredibly rich with hyper specifc data, MusicBrainz turned out to be an
+            ideal alternative to Spotify's Web API.
+          </div>
+          <div className={styles['break']} />
+          <div className={styles['break']} />
+          <div className={styles['mixed-container']}>
+            <div className={styles['mixed-container__text']}>
+              <div
+                className={styles['text-body']}
+              >
+                Additionally, I made custom assetts to give the crates more life - a PS2 style rotating record bin and pixel art music gram.
+                <span style={{ color: 'yellow' }}> Figure 1</span> shows a still from the crate animation.
+              </div>
+              <div className={styles['text-body']}>
+                Though there are a small handful of bugs, optimizations, and improvements I'd like to address, I am happy with Crater's current
+                state. The app is live and useable! To check it out for yourself, use the link below. Feedback and bug reports are welcome
+                and encouraged :)
+              </div>
+            </div>
+            <Image
+              src='/images/crater/crate-animation-still.webp'
+              pixel={true}
+              scale={.9}
+              backgroundColor='black'
+              caption='Fig.1'
+            />
+          </div>
+          <div className={styles['break']} />
+          <a className={styles['link']} href={'https://crater-lite.vercel.app/'}>crater-lite</a>
+          <div className={styles['break']} />
+          <div className={styles['break']} />
+          <div className={styles['sub-title']}>Closing Thoughts</div>
+          <div className={styles['break']} />
+          <div className={styles['text-body']}>
+            Prior to this project, I had no real web development knowledge. As a result, I spent many hours researching, building,
+            scrapping, and rewriting large chunks of my codebase. Though frustrating at times, I am satisfied with
+            the skills and understanding I have gained.
+          </div>
+          <div className={styles['break']} />
+          <div className={styles['break']} />
+          <div className={styles['text-body']}>
+            Perhaps most importantly, I am stepping away from Crater with new insights into my creative pitfalls: sharing your work is more
+            important than perfecting it. Make it shippable, refine it later.
           </div>
           <div className={styles['break']} />
           <div className={styles['break']} />
           <div
-            className={styles['mixed-container']}
+            className={styles['text-body']}
             style={{
-              gap: '20px'
+              boxShadow: '0 1em magenta'
             }}
           >
-            <div className={styles['mixed-container__text']}>
-              <div
-                className={styles['text-body']}
-                style={{
-                  height: 'fit-content'
-                }}
-              >
-                I made custom assetts to give the crates more life - a PS2 style rotating record bin and pixel art music gram.
-                <span style={{ color: 'yellow' }}> Figure 1</span> shows a still from the crate animation. I modified a stock image of a milk
-                crate to create the texture, built a simple model in Blender, and animated it to rotate around the y-axis in a loop.
-              </div>
-              <div className={styles['text-body']}>
-                To checkout Crater for yourself, use the link below!
-              </div>
-              <a className={styles['link']} href={'https://crater-lite.vercel.app/'}>crater</a>
-            </div>
-            <Image 
-              src='/images/crater/crate-animation-still.webp' 
-              pixel={true} 
-              scale={1} 
-              backgroundColor='magenta' 
-              caption='Fig.1' 
-            />
+            If you've made it this far, thank you for taking the time to read my blog! More projects and posts to come soon...
           </div>
+          <div className={styles['break']} />
         </div>
-        <br />
+        <div className={styles['break']} />
         <Footer />
       </div>
     </div>
