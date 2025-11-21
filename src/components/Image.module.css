@@ -1,5 +1,6 @@
 .main {
-  width: 300px;
+  width: 280px;
+  height: 308px;
   aspect-ratio: 1 / 1.1;
   box-sizing: border-box;
   overflow: hidden;
@@ -66,6 +67,8 @@
 @media (max-width: 768px) {
   .main {
     width: 80%;
+    aspect-ratio: 1 / 1.1;
+    height: auto;
   }
 
   .caption {

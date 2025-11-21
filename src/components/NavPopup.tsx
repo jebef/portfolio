@@ -28,7 +28,7 @@ export default function NavPopup({ open }: { open: boolean }) {
 
   const handleCNavClick = () => {
     setTimeout(() => {
-      window.location.href = "/files/Resume2025.pdf";
+      window.location.href = "/files/RESUME.pdf";
     }, navDelay);
   }
 
