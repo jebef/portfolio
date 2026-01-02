@@ -184,7 +184,6 @@ export default function PortraitBounce({ srcs }: { srcs: string[] }) {
       }
 
       /// update sweep /// 
-
       const seed = Math.round(Math.random() * sweepRate);
       if (seed === sweepRate) {
         for (let r = 0; r < numRows; r++) {

@@ -28,6 +28,7 @@ export default function About() {
               caption='- _ -'
             />
         </div>
+        <div className={styles['break']} />
         <div className={styles['sub-title']}>Kai... Bi... Bo!</div>
         <div className={styles['break']} />
         <div className={styles['bullet']}>
