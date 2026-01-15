@@ -21,7 +21,7 @@ export default function About() {
             </div>
           </div>
             <Image
-              src='/images/about/selfie.webp'
+              src='/images/about/selfie-far.webp'
               pixel={false}
               scale={1}
               backgroundColor='none'
