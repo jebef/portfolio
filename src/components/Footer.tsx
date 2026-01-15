@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <div className={styles['main']}>
       <div className={styles['copyright']}>
-        wyatt jebef 2025
+        wyatt jebef 2026
       </div>
       <img 
         className={styles['jebef-img']}
